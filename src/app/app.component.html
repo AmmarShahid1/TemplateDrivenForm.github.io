@@ -1,0 +1,99 @@
+<section>
+  <form class="form" (ngSubmit)="OnFormSubmitted()" #loginForm="ngForm">
+    <header>
+      <h2>{{ title }}</h2>
+    </header>
+    <label for="FName">First Name</label>
+    <input
+      type="text"
+      id="FName"
+      name="FName"
+      placeholder="Enter username here"
+      required
+      ngModel
+      (ngModelChange)="normalizeSpaces('FName')"
+    />
+    <div *ngIf="loginForm.submitted && !loginForm.controls['FName']?.valid">
+      First Name is required.
+    </div>
+    <br />
+
+    <label for="LName">Last Name</label>
+    <input
+      type="text"
+      id="LName"
+      name="LName"
+      placeholder="Enter Last Name"
+      required
+      ngModel
+      (ngModelChange)="normalizeSpaces('LName')"
+    />
+    <div *ngIf="loginForm.submitted && !loginForm.controls['LName']?.valid">
+      Last Name is required.
+    </div>
+    <br />
+
+    <label for="email">Email: </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Enter Your Email "
+      required
+      email
+      ngModel
+    />
+    <div *ngIf="loginForm.submitted && !loginForm.controls['email']?.valid">
+      <div *ngIf="loginForm.controls['email']?.errors?.['required']">
+        Email is required.
+      </div>
+      <div *ngIf="loginForm.controls['email']?.errors?.['email']">
+        Invalid email format.
+      </div>
+    </div>
+    <br />
+
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Enter password"
+      required
+      ngModel
+      minlength="8"
+      #password="ngModel"
+    />
+    <div *ngIf="loginForm.submitted && !loginForm.controls['password']?.valid">
+      <div *ngIf="loginForm.controls['password']?.errors?.['required']">
+        Password is required.
+      </div>
+      <div *ngIf="loginForm.controls['password']?.errors?.['pattern']">
+        Password must contain at least 8 characters, including an uppercase
+        letter, a lowercase letter, a number, and a special character.
+      </div>
+    </div>
+    <br />
+
+    <label for="cpassword">Confirm Password</label>
+    <input
+      type="password"
+      id="cpassword"
+      name="cpassword"
+      placeholder="Enter Correct password"
+      required
+      ngModel
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      #cpassword="ngModel"
+      (ngModelChange)="validatePasswordMatch()"
+    />
+    <div *ngIf="loginForm.submitted && !loginForm.controls['cpassword']?.valid">
+      Confirm Password is required.
+    </div>
+    <div *ngIf="passwordsDoNotMatch">Passwords do not match.</div>
+    <br />
+
+    <input type="submit" value="Submit" />
+  </form>
+</section>
+<router-outlet></router-outlet>

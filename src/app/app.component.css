@@ -1,0 +1,35 @@
+section {
+  width: 70%;
+  margin: auto;
+  padding: 30px;
+}
+header h2 {
+  text-align: center;
+  text-shadow: 1px 1px 2px #c4baba;
+}
+form {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
+form input {
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  border: transparent;
+  box-shadow: 0 4px 8px 0 rgba(130, 130, 130, 0.2),
+    0 6px 20px 0 rgba(130, 130, 130, 0.19);
+}
+input[type="submit"] {
+  width: 30% !important;
+  margin: auto !important;
+  background: #3768c1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
